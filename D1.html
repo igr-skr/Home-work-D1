@@ -1,0 +1,47 @@
+<script>
+	 var inn_number = prompt("Enter your INN");
+	//var inn_number = "317 951 193 3";
+	
+	// 3463463460
+	// 2063463479
+	function spell_out_inn(){
+
+	inn_number = inn_number.split(' ');
+	inn_number = inn_number.join('');
+	inn_number = parseInt(inn_number);
+	inn_number = String(inn_number);
+
+	if( inn_number.length == 10 ){
+		console.log('Ваш номер - корректный')
+	} else {
+		console.log('Ваш номер - некорректный')
+	}
+	var full_days = inn_number.substring(0,5);
+	var sex = inn_number.substring(8,9);
+	if (sex % 2 == 0){
+		sex = "female";
+	} else {
+		sex = "male";
+	}
+	var control = inn_number.substring(9,10);
+
+	var full_date = new Date(0, 0, full_days);
+
+	console.log(full_date);	
+	console.log(sex);	
+	console.log(control);	
+
+	var years_old = new Date().getFullYear() - full_date.getFullYear();
+
+	var inn_data_object = {
+	sex: sex,
+	date_of_birth: `${full_date.getDate()} ${full_date.getMonth()+1} ${full_date.getFullYear()}` ,
+	full_year: years_old,
+	}
+
+	console.dir(inn_data_object);
+	return
+}
+	spell_out_inn();
+
+</script>
